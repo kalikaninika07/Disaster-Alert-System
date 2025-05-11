@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disaster Alert System</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    .header {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-left h1 {
+      font-size: 1.5em;
+      color: #000000;
+    }
+
+    .bell-icon {
+      color: #d32f2f;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 16px;
+    }
+    .nav-link {
+  color: rgb(99, 75, 75);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+.nav-link:hover {
+  background-color: rgb(243, 244, 246);
+}
+.nav-link.active {
+  color: rgb(37, 99, 235);
+  background-color: rgb(239, 246, 255);
+}
+    .main-nav {
+      text-decoration: none;
+      color: #444;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+   
+
+    .location-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .location-icon {
+      color: #444;
+    }
+
+    #enable-location {
+      padding: 6px 12px;
+      background: #2563eb;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .alert-box {
+      background: #fff5f5;
+      border-left: 6px solid #d32f2f;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      color: #b71c1c;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .alert-box strong {
+      font-size: 1.1rem;
+    }
+
+    .alert-box::before {
+      content: "🚨";
+      font-size: 1.5rem;
+      position: absolute;
+      left: -30px;
+      top: 18px;
+    }
+
+    .section {
+      margin: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      color: #e53935;
+      margin-bottom: 12px;
+    }
+
+    .map-placeholder iframe {
+      width: 100%;
+      height: 250px;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    .location {
+      padding: 10px 20px;
+      background-color: #fff;
+      font-size: 1.1em;
+      color: #444;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+    }
+
+    .location span {
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    .location small {
+      color: #888;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: gray;
+    }
+
+    .sos-button {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #d94d43;
+      color: white;
+      border: none;
+      padding: 15px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .sos-button:active {
+      background-color: #d32f2f;
+    }
+    .weather-card {
+      width: 100%;
+      max-width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px 20px;
+      border-radius: 0;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+
+    .logo {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    .weather-card h2 {
+      margin: 0 0 15px;
+      color: #333;
+      font-size: 24px;
+    }
+
+    #city-input {
+      padding: 12px;
+      width: 85%;
+      border-radius: 10px;
+      border: none;
+      background: #f2f2f2;
+      font-size: 16px;
+      box-shadow: inset 1px 1px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    #weather-icon {
+      margin: 15px 0;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    #weather-icon img {
+      width: 110px;
+      height: 110px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    #temp, #condition, #location {
+      margin: 8px 0;
+      font-size: 18px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    #temp {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    #location { font-weight: 600; }
+    #condition { text-transform: capitalize; }
+
+    .forecast {
+      margin-top: 25px;
+      text-align: left;
+    }
+
+    .forecast h3 {
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .forecast-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+
+    .hour-card {
+      min-width: 100px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px;
+      text-align: center;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .hour-card:hover {
+      transform: scale(1.05);
+      background: #f0faff;
+    }
+
+    .hour-card img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .hour-time {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .icon {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-container">
+      <div class="header-left">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bell-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+        <h1>Disaster Alert System</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html" class="nav-link active">Home</a>
+        <a href="index.html" class="nav-link">Alerts</a>
+        <a href="qa.html" class="nav-link">Q&A</a>
+        <a href="news.html" class="nav-link">News</a>
+        <a href="guide.html" class="nav-link">Disaster Guide</a>
+      </nav>
+      <div class="location-status">
+        <svg xmlns="http://www.w3.org/2000/svg" class="location-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <span id="location-text">Enable location for alerts</span>
+        <button id="enable-location">Enable Location</button>
+      </div>
+  </div>
+  </header>
+
+  <!-- Location Info -->
+  <div class="location">
+    📍<span>Bhubaneswar</span>
+    <small>Devik Vihar, Tamando</small>
+  </div>
+</head>
+<body>
+  <div class="weather-card">
+    <img class="logo" src="https://img.icons8.com/fluency/96/partly-cloudy-day.png" alt="Weather Logo">
+    <h2>Live Weather</h2>
+    <input id="city-input" type="text" placeholder="Enter city (or leave blank for current location)" />
+    <div id="location"><span class="icon">📍</span> Detecting location...</div>
+    <div id="weather-icon"></div>
+    <div id="temp"><span class="icon">🌡️</span> -- °C</div>
+    <div id="condition"><span class="icon">🌤️</span> --</div>
+    <div class="forecast" id="hourly">
+      <h3>Hourly Forecast</h3>
+      <div class="forecast-scroll" id="forecast-list">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Alert Box -->
+  <div class="alert-box" id="liveAlert">
+    <strong>Earthquake Alert:</strong> 5.7 magnitude earthquake detected near Delhi.  
+    <br><small>Time: 04:15 PM | Severity: Moderate</small>
+  </div>
+
+  <!-- Map Section -->
+  <div class="section">
+    <h2>🗺 Map View</h2>
+    <div class="map-placeholder">
+      <iframe
+        id="gmap"
+        src="https://maps.google.com/maps?q=India&t=&z=5&ie=UTF8&iwloc=&output=embed"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Disaster Alert System | Stay Safe 🌐
+  </footer>
+
+  <!-- SOS Button -->
+  <button class="sos-button">🚨 SOS Call</button>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("enable-location").addEventListener("click", () => {
+  const locationText = document.getElementById("location-text");
+
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(position => {
+      const { latitude, longitude } = position.coords;
+      locationText.textContent = `📍 Lat: ${latitude.toFixed(2)}, Long: ${longitude.toFixed(2)}`;
+
+      // Update Google Map
+      const gmap = document.getElementById("gmap");
+      gmap.src = `https://maps.google.com/maps?q=${latitude},${longitude}&z=13&output=embed`;
+
+      // ✅ Update Weather using coordinates
+      getWeatherByCoords(latitude, longitude);
+    }, () => {
+      locationText.textContent = "Location access denied.";
+    });
+  } else {
+    locationText.textContent = "Geolocation not supported.";
+  }
+});
+
+  </script>
+  
+  <script>
+    const apiKey = "17be0d3699e55bc80d0c1de9c32d2797";
+  
+    const updateWeather = (weatherURL, forecastURL) => {
+      fetch(weatherURL)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("location").innerHTML = `<span class="icon">📍</span> ${data.name}, ${data.sys.country}`;
+          document.getElementById("temp").innerHTML = `<span class="icon">🌡️</span> ${data.main.temp} °C`;
+          document.getElementById("condition").innerHTML = `<span class="icon">🌤️</span> ${data.weather[0].description}`;
+          const iconCode = data.weather[0].icon;
+          document.getElementById("weather-icon").innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png">`;
+        });
+  
+      fetch(forecastURL)
+        .then(res => res.json())
+        .then(data => {
+          let html = "";
+          data.list.slice(0, 8).forEach(hour => { // Next 8 entries (~24 hours)
+            const time = new Date(hour.dt * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            const iconCode = hour.weather[0].icon;
+            const temp = hour.main.temp;
+            html += `
+              <div class="hour-card">
+                <div class="hour-time">${time}</div>
+                <img src="https://openweathermap.org/img/wn/${iconCode}.png" alt="icon">
+                <div>${temp}°C</div>
+              </div>`;
+          });
+          document.getElementById("forecast-list").innerHTML = html;
+        });
+    };
+  
+    const getWeatherByCoords = (lat, lon) => {
+      const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+      const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+      updateWeather(weatherURL, forecastURL);
+    };
+  
+    const getWeatherByCity = (city) => {
+      const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+      const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+      updateWeather(weatherURL, forecastURL);
+    };
+  
+    // Auto detect weather on page load using geolocation
+    window.addEventListener("load", () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            getWeatherByCoords(pos.coords.latitude, pos.coords.longitude);
+          },
+          () => {
+            getWeatherByCity("Bhubaneswar"); // fallback
+          }
+        );
+      } else {
+        getWeatherByCity("Bhubaneswar"); // fallback
+      }
+    });
+  
+    // Handle city input
+    document.getElementById("city-input").addEventListener("change", (e) => {
+      const city = e.target.value.trim();
+      if (city !== "") {
+        getWeatherByCity(city);
+      }
+    });
+  </script>
+  
+</body>
+</html>
+
+  
+</body>
+</html>

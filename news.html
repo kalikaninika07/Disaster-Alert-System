@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News - Disaster Alert System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <div class="header-left">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="bell-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+          <h1>Disaster Alert System</h1>
+        </div>
+        <nav class="main-nav">
+          <a href="home.html" class="nav-link">Home</a>
+          <a href="index.html" class="nav-link">Alerts</a>
+          <a href="qa.html" class="nav-link">Q&A</a>
+          <a href="news.html" class="nav-link active">News</a>
+          <a href="guide.html" class="nav-link">Disaster Guide</a>
+        </nav>
+        <div class="location-status">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="location-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span id="location-text">Enable location for alerts</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <div class="news-container">
+        <h2>Latest Disaster News & Updates</h2>
+
+        <div class="news-filters">
+          <button class="filter-btn active" onclick="filterNews('all')">
+            All News
+          </button>
+          <button class="filter-btn" onclick="filterNews('earthquake')">
+            Earthquakes
+          </button>
+          <button class="filter-btn" onclick="filterNews('flood')">
+            Floods
+          </button>
+          <button class="filter-btn" onclick="filterNews('fire')">Fires</button>
+          <button class="filter-btn" onclick="filterNews('cyclone')">
+            Cyclones
+          </button>
+        </div>
+
+        <div class="news-grid" id="news-grid"></div>
+        <div class="news-pagination">
+          <button class="pagination-btn" disabled>Previous</button>
+          <span class="pagination-current">Page 1 of 5</span>
+          <button class="pagination-btn">Next</button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const newsData = {
+        all: [
+          {
+            title: "6.2 Magnitude Earthquake Strikes Pacific Coast",
+            category: "earthquake",
+            excerpt:
+              "A powerful earthquake has struck off the Pacific coast, triggering tsunami warnings in coastal areas...",
+            date: "March 15, 2024",
+            image:
+              "https://images.unsplash.com/photo-1523978591478-c753949ff840?w=800",
+            link: "#",
+          },
+          {
+            title: "Emergency Response Teams Deploy for Flash Floods",
+            category: "flood",
+            excerpt:
+              "Rescue teams are working around the clock as flash floods continue to affect riverside communities...",
+            date: "March 14, 2024",
+            image:
+              "https://images.unsplash.com/photo-1547683905-f686c993c794?w=800",
+            link: "#",
+          },
+          {
+            title: "Wildfire Containment Efforts Show Progress",
+            category: "fire",
+            excerpt:
+              "Firefighters report significant progress in containing the mountain wildfire that has been burning...",
+            date: "March 13, 2024",
+            image:
+              "https://images.unsplash.com/photo-1523978591478-c753949ff840?w=800",
+            link: "#",
+          },
+          {
+            title: "Cyclone Destroys Coastal Towns, Thousands Affected",
+            category: "cyclone",
+            excerpt:
+              "A powerful cyclone has torn through coastal towns, leaving behind significant damage and thousands displaced...",
+            date: "March 12, 2024",
+            image:
+              "https://images.unsplash.com/photo-1501589172269-e365a0d905b0?w=800",
+            link: "#",
+          },
+        ],
+      };
+
+      function generateNewsCards(category) {
+        const grid = document.getElementById("news-grid");
+        grid.innerHTML = "";
+        const filteredNews =
+          category === "all"
+            ? newsData.all
+            : newsData.all.filter((news) => news.category === category);
+        filteredNews.forEach((news) => {
+          const card = document.createElement("div");
+          card.classList.add("news-card");
+          card.innerHTML = `
+          <img src="${news.image}" alt="${news.title}" class="news-image">
+          <div class="news-content">
+            <span class="news-tag">${news.category}</span>
+            <h3>${news.title}</h3>
+            <p class="news-excerpt">${news.excerpt}</p>
+            <div class="news-meta">
+              <span class="news-date">${news.date}</span>
+              <a href="${news.link}" class="read-more">Read More</a>
+            </div>
+          </div>
+        `;
+          grid.appendChild(card);
+        });
+      }
+
+      function filterNews(category) {
+        const buttons = document.querySelectorAll(".filter-btn");
+        buttons.forEach((button) => button.classList.remove("active"));
+        const activeButton = document.querySelector(
+          `.filter-btn[onclick="filterNews('${category}')"]`
+        );
+        activeButton.classList.add("active");
+        generateNewsCards(category);
+      }
+
+      generateNewsCards("all");
+    </script>
+  </body>
+</html>

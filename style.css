@@ -1,0 +1,558 @@
+/* Base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: rgb(249, 250, 251);
+    min-height: 100vh;
+  }
+  
+  /* Header styles */
+  .header {
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .header-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .bell-icon {
+    width: 2rem;
+    height: 2rem;
+    color: rgb(220, 38, 38);
+  }
+  
+  .location-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(17, 24, 39);
+  }
+  
+  .location-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: rgb(75, 85, 99);
+  }
+  
+  /* Navigation styles */
+  .main-nav {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+  
+  .nav-link {
+    color: rgb(75, 85, 99);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+  
+  .nav-link:hover {
+    background-color: rgb(243, 244, 246);
+  }
+  
+  .nav-link.active {
+    color: rgb(37, 99, 235);
+    background-color: rgb(239, 246, 255);
+  }
+  
+  /* Main content styles */
+  .main-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  /* Alert card styles */
+  .alert-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .alert-type {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .alert-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .alert-severity {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .severity-1 { background-color: rgb(254, 243, 199); color: rgb(146, 64, 14); }
+  .severity-2 { background-color: rgb(254, 215, 170); color: rgb(154, 52, 18); }
+  .severity-3 { background-color: rgb(254, 202, 202); color: rgb(153, 27, 27); }
+  .severity-4 { background-color: rgb(254, 178, 178); color: rgb(127, 29, 29); }
+  .severity-5 { background-color: rgb(252, 165, 165); color: rgb(127, 29, 29); }
+  
+  .alert-content {
+    margin-bottom: 1rem;
+  }
+  
+  .alert-description {
+    color: rgb(75, 85, 99);
+    margin-bottom: 0.5rem;
+  }
+  
+  .alert-meta {
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .alert-tips {
+    border-top: 1px solid rgb(229, 231, 235);
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tips-title {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tips-list {
+    list-style-position: inside;
+    color: rgb(75, 85, 99);
+    font-size: 0.875rem;
+  }
+  
+  .tips-list li {
+    margin-bottom: 0.25rem;
+  }
+  
+  /* Safe Zones styles */
+  .safe-zones {
+    border-top: 1px solid rgb(229, 231, 235);
+    padding-top: 1rem;
+  }
+  
+  .safe-zones-title {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: rgb(17, 24, 39);
+  }
+  
+  .safe-zones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .safe-zone-item {
+    background-color: rgb(243, 244, 246);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .safe-zone-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .safe-zone-icon {
+    color: rgb(37, 99, 235);
+  }
+  
+  .safe-zone-header h4 {
+    font-weight: 500;
+    color: rgb(17, 24, 39);
+    flex: 1;
+  }
+  
+  .distance {
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .safe-zone-details {
+    font-size: 0.875rem;
+    color: rgb(75, 85, 99);
+    margin-bottom: 1rem;
+  }
+  
+  .safe-zone-details p {
+    margin-bottom: 0.25rem;
+  }
+  
+  .directions-btn {
+    width: 100%;
+    background-color: rgb(37, 99, 235);
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .directions-btn:hover {
+    background-color: rgb(29, 78, 216);
+  }
+  
+  /* Map styles */
+  .map-section {
+    position: sticky;
+    top: 2rem;
+  }
+  
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: rgb(243, 244, 246);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .map-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .map-info {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .map-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .map-status {
+    font-size: 0.75rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  /* Q&A styles */
+  .qa-container {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+  
+  .qa-search {
+    margin-bottom: 2rem;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .qa-item {
+    border: 1px solid rgb(229, 231, 235);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  
+  .qa-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .qa-answer {
+    padding: 1rem;
+    background-color: rgb(249, 250, 251);
+    border-top: 1px solid rgb(229, 231, 235);
+  }
+  
+  .qa-answer ul {
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+  }
+  
+  .chevron-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  /* News styles */
+  .news-container {
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+  
+  .news-filters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: 0.375rem;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .filter-btn:hover {
+    background-color: rgb(243, 244, 246);
+  }
+  
+  .filter-btn.active {
+    background-color: rgb(37, 99, 235);
+    color: white;
+    border-color: rgb(37, 99, 235);
+  }
+  
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .news-card {
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .news-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .news-content {
+    padding: 1.5rem;
+  }
+  
+  .news-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: rgb(239, 246, 255);
+    color: rgb(37, 99, 235);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .news-card h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    color: rgb(17, 24, 39);
+  }
+  
+  .news-excerpt {
+    color: rgb(107, 114, 128);
+    margin-bottom: 1rem;
+  }
+  
+  .news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(107, 114, 128);
+    font-size: 0.875rem;
+  }
+  
+  .read-more {
+    color: rgb(37, 99, 235);
+    text-decoration: none;
+  }
+  
+  .news-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .pagination-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: 0.375rem;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Guide styles */
+  .guide-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+  }
+  
+  .guide-sidebar {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .guide-nav {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  
+  .guide-nav-link {
+    display: block;
+    padding: 0.75rem;
+    color: rgb(75, 85, 99);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+  
+  .guide-nav-link:hover {
+    background-color: rgb(243, 244, 246);
+  }
+  
+  .guide-nav-link.active {
+    color: rgb(37, 99, 235);
+    background-color: rgb(239, 246, 255);
+  }
+  
+  .guide-section {
+    margin-bottom: 3rem;
+  }
+  
+  .guide-card {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .guide-card h3 {
+    margin-bottom: 1rem;
+    color: rgb(17, 24, 39);
+  }
+  
+  .guide-card ul {
+    margin-left: 1.5rem;
+    color: rgb(75, 85, 99);
+  }
+  
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .checklist-item input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    border: 2px solid rgb(209, 213, 219);
+    cursor: pointer;
+  }

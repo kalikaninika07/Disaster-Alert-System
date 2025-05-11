@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disaster Alert System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <div class="header-left">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="bell-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+          <h1>Disaster Alert System</h1>
+        </div>
+        <nav class="main-nav">
+          <a href="home.html" class="nav-link">Home</a>
+          <a href="index.html" class="nav-link active">Alerts</a>
+          <a href="qa.html" class="nav-link">Q&A</a>
+          <a href="news.html" class="nav-link">News</a>
+          <a href="guide.html" class="nav-link">Disaster Guide</a>
+        </nav>
+        <div class="location-status">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="location-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span id="location-text">Enable location for alerts</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <div class="grid">
+        <div class="alerts-section">
+          <h2>Active Alerts</h2>
+          <div id="alerts-container" class="alerts-container">
+            <!-- Alerts will be inserted here -->
+          </div>
+        </div>
+
+        <div class="map-section">
+          <h2>Alert Map</h2>
+          <div class="map-container">
+            <div class="map-overlay"></div>
+            <div class="map-info">
+              <p class="map-title">Map View</p>
+              <p id="map-status" class="map-status">Showing alerts near you</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

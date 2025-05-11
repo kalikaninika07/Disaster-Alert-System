@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disaster Guide - Disaster Alert System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <div class="header-left">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="bell-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+          <h1>Disaster Alert System</h1>
+        </div>
+        <nav class="main-nav">
+          <a href="home.html" class="nav-link">Home</a>
+          <a href="index.html" class="nav-link">Alerts</a>
+          <a href="qa.html" class="nav-link">Q&A</a>
+          <a href="news.html" class="nav-link">News</a>
+          <a href="guide.html" class="nav-link active">Disaster Guide</a>
+        </nav>
+        <div class="location-status">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="location-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span id="location-text">Enable location for alerts</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <div class="guide-container">
+        <div class="guide-sidebar">
+          <h3>Quick Navigation</h3>
+          <ul class="guide-nav">
+            <li>
+              <a
+                href="#"
+                class="guide-nav-link active"
+                data-target="earthquakes"
+                >Earthquakes</a
+              >
+            </li>
+            <li>
+              <a href="#" class="guide-nav-link" data-target="floods">Floods</a>
+            </li>
+            <li>
+              <a href="#" class="guide-nav-link" data-target="fires">Fires</a>
+            </li>
+            <li>
+              <a href="#" class="guide-nav-link" data-target="cyclones"
+                >Cyclones</a
+              >
+            </li>
+            <li>
+              <a href="#" class="guide-nav-link" data-target="preparation"
+                >General Preparation</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="guide-content">
+          <section id="earthquakes" class="guide-section">
+            <h2>Earthquake Safety Guide</h2>
+            <div class="guide-card">
+              <h3>Before an Earthquake</h3>
+              <ul>
+                <li>Secure heavy furniture to walls</li>
+                <li>Know safe spots in each room</li>
+                <li>Practice earthquake drills</li>
+                <li>Prepare emergency kit</li>
+              </ul>
+            </div>
+            <!-- Add other earthquake safety content here -->
+            <div class="guide-card">
+              <h3>During an Earthquake</h3>
+              <ul>
+                <li>Drop, Cover, and Hold On</li>
+                <li>Stay away from windows</li>
+                <li>If driving, pull over safely</li>
+                <li>If outdoors, move to open area</li>
+              </ul>
+            </div>
+
+            <div class="guide-card">
+              <h3>After an Earthquake</h3>
+              <ul>
+                <li>Check for injuries</li>
+                <li>Listen to emergency broadcasts</li>
+                <li>Avoid damaged buildings</li>
+                <li>Be prepared for aftershocks</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="floods" class="guide-section" style="display: none">
+            <h2>Flood Safety Guide</h2>
+            <div class="guide-card">
+              <h3>Before a Flood</h3>
+              <ul>
+                <li>Know your area's flood risk</li>
+                <li>Store important documents in waterproof containers</li>
+                <li>Prepare emergency kit and evacuation plan</li>
+                <li>Install check valves in plumbing to prevent backups</li>
+              </ul>
+            </div>
+            <!-- Add other flood safety content here -->
+            <div class="guide-card">
+              <h3>During a Flood</h3>
+              <ul>
+                <li>Move to higher ground immediately</li>
+                <li>Avoid walking or driving through flood waters</li>
+                <li>Disconnect electrical appliances</li>
+                <li>Stay tuned to emergency alerts</li>
+              </ul>
+            </div>
+
+            <div class="guide-card">
+              <h3>After a Flood</h3>
+              <ul>
+                <li>Return home only when declared safe</li>
+                <li>Avoid contact with floodwater (may be contaminated)</li>
+                <li>Check for structural damage</li>
+                <li>Document damage for insurance claims</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="fires" class="guide-section" style="display: none">
+            <h2>Fire Safety Guide</h2>
+            <div class="guide-card">
+              <h3>Before a Fire</h3>
+              <ul>
+                <li>Install smoke detectors on every floor</li>
+                <li>Plan and practice fire escape routes</li>
+                <li>Keep fire extinguishers accessible</li>
+                <li>Don't overload electrical outlets</li>
+              </ul>
+            </div>
+            <!-- Add other fire safety content here -->
+            <div class="guide-card">
+              <h3>During a Fire</h3>
+              <ul>
+                <li>Stay low to avoid smoke inhalation</li>
+                <li>Use the back of your hand to check doors</li>
+                <li>Never use elevators during a fire</li>
+                <li>Call emergency services once safe</li>
+              </ul>
+            </div>
+
+            <div class="guide-card">
+              <h3>After a Fire</h3>
+              <ul>
+                <li>Do not re-enter until officials declare it safe</li>
+                <li>Check for hot spots or smoldering materials</li>
+                <li>Take photos of damage for insurance</li>
+                <li>Seek help for trauma or stress if needed</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="cyclones" class="guide-section" style="display: none">
+            <h2>Cyclone Safety Guide</h2>
+            <div class="guide-card">
+              <h3>Before a Cyclone</h3>
+              <ul>
+                <li>Secure loose items around your home</li>
+                <li>Trim branches and trees near your house</li>
+                <li>Stock emergency supplies</li>
+                <li>Know your nearest cyclone shelter</li>
+              </ul>
+            </div>
+            <!-- Add other cyclone safety content here -->
+            <div class="guide-card">
+              <h3>During a Cyclone</h3>
+              <ul>
+                <li>Stay indoors and away from windows</li>
+                <li>Turn off gas, electricity, and water if advised</li>
+                <li>Use battery-powered devices to stay informed</li>
+                <li>Evacuate only if instructed by authorities</li>
+              </ul>
+            </div>
+
+            <div class="guide-card">
+              <h3>After a Cyclone</h3>
+              <ul>
+                <li>Stay indoors until the all-clear is given</li>
+                <li>Beware of downed power lines and flooding</li>
+                <li>Check on neighbors and those in need</li>
+                <li>Document any damage for reports and claims</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="preparation" class="guide-section" style="display: none">
+            <h2>General Disaster Preparation</h2>
+            <div class="guide-card">
+              <h3>Emergency Kit Essentials</h3>
+              <ul>
+                <li>Water (1 gallon per person per day)</li>
+                <li>Non-perishable food</li>
+                <li>First aid kit</li>
+                <li>Flashlights and batteries</li>
+                <li>Emergency radio</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // JavaScript to handle section visibility based on navigation click
+      const navLinks = document.querySelectorAll(".guide-nav-link");
+      const sections = document.querySelectorAll(".guide-section");
+
+      // Function to hide all sections
+      function hideAllSections() {
+        sections.forEach((section) => {
+          section.style.display = "none";
+        });
+      }
+
+      // Function to show the selected section
+      function showSection(target) {
+        const section = document.getElementById(target);
+        if (section) {
+          section.style.display = "block";
+        }
+      }
+
+      // Add click event listeners to the navigation links
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault(); // Prevent the default link behavior
+
+          // Remove active class from all nav links
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+          });
+
+          // Add active class to the clicked link
+          link.classList.add("active");
+
+          // Hide all sections
+          hideAllSections();
+
+          // Show the clicked section
+          const target = link.getAttribute("data-target");
+          showSection(target);
+        });
+      });
+
+      // Initially show the Earthquake section by default
+      showSection("earthquakes");
+    </script>
+  </body>
+</html>
